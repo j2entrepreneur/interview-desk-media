@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; background: transparent; overflow: hidden; }
+  body {
+    font-family: "Inter", sans-serif;
+    color: #f4f4f4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Dark pane behind text for readability over video */
+  .text-pane {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    top: 260px;
+    bottom: 480px;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 24px;
+  }
+
+  /* Safe zone for text content */
+  .card-text {
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    top: 300px;
+    bottom: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .card-text p {
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .handle {
+    position: absolute;
+    bottom: 440px;
+    font-weight: 600;
+    font-size: 36px;
+    color: rgba(244, 244, 244, 0.35);
+    letter-spacing: 0.01em;
+  }
+</style>
+</head>
+<body>
+  <div class="text-pane" id="pane"></div>
+  <div class="card-text">
+    <p id="text"></p>
+  </div>
+  <div class="handle" id="handle">@iamjoshauld</div>
+
+<script>
+// Shrink text until it fits the container
+function fit(el, minPx) {
+  let size = parseFloat(getComputedStyle(el).fontSize);
+  const container = el.parentElement;
+  while (el.scrollHeight > container.clientHeight && size > minPx) {
+    size -= 2;
+    el.style.fontSize = size + 'px';
+  }
+  return size;
+}
+
+window.setup = function(d) {
+  const el = document.getElementById('text');
+  el.textContent = d.text;
+  if (d.handle) document.getElementById('handle').textContent = d.handle;
+
+  // Allow pane opacity override
+  if (d.paneOpacity !== undefined) {
+    document.getElementById('pane').style.background =
+      'rgba(0, 0, 0, ' + d.paneOpacity + ')';
+  }
+
+  const fontSize = fit(el, 32);
+
+  // Resize pane to hug the text with padding
+  const textRect = el.getBoundingClientRect();
+  const pane = document.getElementById('pane');
+  const padV = 60, padH = 50;
+  const top = Math.max(260, textRect.top - padV);
+  const bottom = Math.max(480, 1920 - textRect.bottom - padV);
+  pane.style.top = top + 'px';
+  pane.style.bottom = bottom + 'px';
+
+  return { fontSize, chars: d.text.length };
+};
+</script>
+</body>
+</html>
