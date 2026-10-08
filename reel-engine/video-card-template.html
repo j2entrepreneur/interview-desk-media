@@ -49,6 +49,12 @@
     text-wrap: balance;
   }
 
+  .card-text p em {
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(244, 244, 244, 0.85);
+  }
+
   .handle {
     position: absolute;
     bottom: 440px;
@@ -80,7 +86,7 @@ function fit(el, minPx) {
 
 window.setup = function(d) {
   const el = document.getElementById('text');
-  el.textContent = d.text;
+  el.innerHTML = d.text;
   if (d.handle) document.getElementById('handle').textContent = d.handle;
 
   // Allow pane opacity override
