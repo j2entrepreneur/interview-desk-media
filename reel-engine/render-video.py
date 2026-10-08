@@ -11,7 +11,9 @@ spec.json fields:
   tint         (optional) darken the background 0.0-1.0, default 0.35
 
 options:
-  --duration N    how many seconds (default 10, capped to background length)
+  --duration N    override duration in seconds (default: auto from reading time
+                  at 18.5 characters per second + 1.5s settle, capped to
+                  background length). Warns if override is too short to read.
   --tint N        override background darkening (0.0=none, 1.0=black)
   --pane N        override dark pane opacity behind text
 
@@ -23,6 +25,7 @@ The engine:
 5. Adds silent audio track for Instagram Reel compatibility
 """
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -31,6 +34,15 @@ from playwright.sync_api import sync_playwright
 
 HERE = Path(__file__).parent
 FPS = 30
+CPS = 18.5          # reading rate in characters per second (spaces included)
+SETTLE = 1.5        # seconds for the eye to land before reading starts
+
+
+def reading_duration(html_text):
+    """Calculate how long a viewer needs to read the text at CPS rate.
+    Strips HTML tags to count only readable characters."""
+    readable = re.sub(r"<[^>]+>", "", html_text)
+    return SETTLE + len(readable) / CPS
 
 
 def probe_duration(video_path):
@@ -46,7 +58,7 @@ def probe_duration(video_path):
         return 10.0
 
 
-def render(spec_path, out_path, duration=10, tint_override=None, pane_override=None):
+def render(spec_path, out_path, duration=None, tint_override=None, pane_override=None):
     spec = json.loads(Path(spec_path).read_text())
     if not spec.get("text"):
         raise SystemExit("missing field: text")
@@ -60,9 +72,16 @@ def render(spec_path, out_path, duration=10, tint_override=None, pane_override=N
     tint = tint_override if tint_override is not None else spec.get("tint", 0.35)
     pane_opacity = pane_override if pane_override is not None else spec.get("paneOpacity", 0.55)
 
-    # Cap duration to background video length
+    # Auto-duration from reading time at 18.5 cps, capped to background length
+    read_time = reading_duration(spec["text"])
     bg_duration = probe_duration(bg_path)
-    duration = min(duration, bg_duration)
+    if duration is None:
+        duration = min(read_time, bg_duration)
+    else:
+        duration = min(duration, bg_duration)
+
+    if duration < read_time:
+        print(f"  WARNING: video {duration:.1f}s but text needs {read_time:.1f}s at {CPS} cps")
 
     # --- Step 1: Render text overlay as transparent PNG ---
     with sync_playwright() as p:
@@ -137,9 +156,11 @@ def render(spec_path, out_path, duration=10, tint_override=None, pane_override=N
     if ff.returncode != 0:
         raise SystemExit(f"ffmpeg failed with exit code {ff.returncode}")
 
+    readable_chars = len(re.sub(r"<[^>]+>", "", spec["text"]))
     print(f"OK  {out_path}  {duration:.1f}s  font {info['fontSize']}px  "
-          f"{info['chars']} chars  tint={tint}  pane={pane_opacity}")
-    return {"file": str(out_path), "duration": duration, **info}
+          f"{readable_chars} readable chars  {readable_chars / max(0.1, duration - SETTLE):.1f} cps "
+          f"(target {CPS})  tint={tint}  pane={pane_opacity}")
+    return {"file": str(out_path), "duration": duration, "read_time": read_time, **info}
 
 
 if __name__ == "__main__":
@@ -157,8 +178,9 @@ if __name__ == "__main__":
             return val
         return None
 
-    duration = pop_flag("--duration") or 10
-    duration = int(duration)
+    duration = pop_flag("--duration")
+    if duration is not None:
+        duration = int(duration)
     tint_override = pop_flag("--tint")
     pane_override = pop_flag("--pane")
 
