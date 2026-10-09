@@ -1,0 +1,80 @@
+[
+  {
+    "id": "b3-01-shrinking",
+    "label": "Shrinking yourself",
+    "voice": "you",
+    "type": "recognition",
+    "text": "You can shrink yourself small enough that nobody objects. Stay available instead of focused. Keep the peace. It costs you the thing you were building. A man who puts himself last to avoid being punished for going first eventually forgets he was working towards anything. Standing in your truth includes the parts that make people uncomfortable.",
+    "source": "Raw insights 3.3: shrinking his purpose to avoid being punished for going first. Also 3.4: searching for the magic solution.",
+    "josh_phrases": "stand in your truth",
+    "invented": "The examples (stay available, keep the peace) and the closer are invented but ring true for this man.",
+    "background": "/mnt/user-data/uploads/dark-grunge-wood-texture-with-dynamic-spotlight-an-2026-10-03-08-04-57-utc.mp4",
+    "bg_name": "dark-grunge-wood-spotlight",
+    "bg_duration": 20.0
+  },
+  {
+    "id": "b3-02-love-nowhere",
+    "label": "Love with nowhere to go",
+    "voice": "universal",
+    "type": "relief",
+    "text": "A man who carries everything alone isn't trying to be a hero. He's tried sharing the load and watched it land too heavy on the people around him. So he holds it. Not because he thinks he should, but because he has the capacity and they don't, and he'd rather feel alone than watch them buckle. That's not pride. That's love with nowhere to go.",
+    "source": "Brain dump 5: the weight men carry. Raw insights 8.2: same essay, verbatim.",
+    "josh_phrases": "capacity",
+    "invented": "The closer 'love with nowhere to go' is invented. The idea is Josh's.",
+    "background": "/mnt/user-data/uploads/vertical-view-of-beautiful-mountains-hill-with-lan-2026-10-03-17-23-55-utc.mp4",
+    "bg_name": "mountains-hill-landscape",
+    "bg_duration": 29.8
+  },
+  {
+    "id": "b3-03-ten-steps",
+    "label": "Ten steps ahead",
+    "voice": "you",
+    "type": "recognition",
+    "text": "You've mapped the problem from every angle. Read the books. Connected the dots. You're ten steps ahead of the conversation you haven't had yet. Nothing has changed. The thing keeping you stuck isn't a lack of understanding. It's the distance between knowing what's wrong and letting it reach you.",
+    "source": "Raw insights 1.7: his analytical process, 'I'm 10 steps ahead all the time.' Also 1.6: embodied vs head knowledge.",
+    "josh_phrases": "ten steps ahead",
+    "invented": "The closer is invented. The analytical-man-stuck pattern is Josh's.",
+    "background": "/mnt/user-data/uploads/cinematic-vertical-planet-view-with-drifting-cosmi-2026-10-03-07-25-22-utc.mov",
+    "bg_name": "cinematic-vertical-planet-cosmic",
+    "bg_duration": 16.5
+  },
+  {
+    "id": "b3-04-the-relief",
+    "label": "The relief",
+    "voice": "you",
+    "type": "relief",
+    "text": "You felt the relief and it scared you. Not the thought of leaving. The calm that came when you imagined it. You expected grief. What you got was space. That doesn't make you cold and it doesn't mean you've given up. It means the weight is real and your body already knows what your mind won't own yet.",
+    "source": "Raw insights 4.1: 'I can't forget the sense of relief I had when we separated.' Generalised: many men feel this.",
+    "josh_phrases": "own (from 'own it')",
+    "invented": "The scene is invented but universal. The relief-as-information frame is Josh's.",
+    "background": "/mnt/user-data/uploads/abstract-vertical-light-motion-background-with-tex-2026-10-03-08-05-11-utc.mp4",
+    "bg_name": "abstract-light-motion",
+    "bg_duration": 20.0
+  },
+  {
+    "id": "b3-05-one-side",
+    "label": "One side",
+    "voice": "universal",
+    "type": "recognition",
+    "text": "Some men spend years holding a relationship together from one side. Showing up when nothing comes back. Doing the work on himself because he was told that's what changes things. It does. But only for him. A relationship needs two people to show up. One man's growth cannot carry two.",
+    "source": "Brain dump 6: men's work content loading all responsibility on the man. Raw insights 3.5: not repeating the burnout.",
+    "josh_phrases": "show up / showing up",
+    "invented": "The closer 'One man's growth cannot carry two' is invented.",
+    "background": "/mnt/user-data/uploads/aerial-view-of-waves-crashing-on-dark-beach-2026-10-02-04-52-33-utc.mov",
+    "bg_name": "aerial-view-waves-crashing-dark-beach",
+    "bg_duration": 15.2
+  },
+  {
+    "id": "b3-06-breaking-pattern",
+    "label": "Breaking the pattern",
+    "voice": "universal",
+    "type": "lighter",
+    "text": "A man doesn't break the pattern by being perfect. He breaks it by owning it when he gets it wrong and showing up anyway.",
+    "source": "Raw insights 1.1: his manifesto. 1.6: embodied knowledge. Brain dump 3: recurring patterns.",
+    "josh_phrases": "own it, show up",
+    "invented": "Short shape reframe. The framing is invented; the values are Josh's.",
+    "background": "/root/.claude/uploads/4764cd9c-3697-5e06-a514-ff8ff6a55f51/4e3d8a3f-white-smoke-rising-fluid-abstract-animation-2026-10-03-09-21-19-utc.mov",
+    "bg_name": "white-smoke-abstract",
+    "bg_duration": 9.1
+  }
+]

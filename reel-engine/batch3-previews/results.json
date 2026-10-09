@@ -1,0 +1,56 @@
+[
+  {
+    "id": "b3-01-shrinking",
+    "file": "batch3-previews/b3-01-shrinking.png",
+    "read_time": 20.1,
+    "char_count": 344,
+    "bg_duration": 20.0,
+    "font_size": 52,
+    "warning": "WARNING: needs 20.1s but clip is 20.0s"
+  },
+  {
+    "id": "b3-02-love-nowhere",
+    "file": "batch3-previews/b3-02-love-nowhere.png",
+    "read_time": 20.0,
+    "char_count": 343,
+    "bg_duration": 29.8,
+    "font_size": 52,
+    "warning": null
+  },
+  {
+    "id": "b3-03-ten-steps",
+    "file": "batch3-previews/b3-03-ten-steps.png",
+    "read_time": 17.5,
+    "char_count": 296,
+    "bg_duration": 16.5,
+    "font_size": 52,
+    "warning": "WARNING: needs 17.5s but clip is 16.5s"
+  },
+  {
+    "id": "b3-04-the-relief",
+    "file": "batch3-previews/b3-04-the-relief.png",
+    "read_time": 17.8,
+    "char_count": 301,
+    "bg_duration": 20.0,
+    "font_size": 52,
+    "warning": null
+  },
+  {
+    "id": "b3-05-one-side",
+    "file": "batch3-previews/b3-05-one-side.png",
+    "read_time": 16.8,
+    "char_count": 283,
+    "bg_duration": 15.2,
+    "font_size": 52,
+    "warning": "WARNING: needs 16.8s but clip is 15.2s"
+  },
+  {
+    "id": "b3-06-breaking-pattern",
+    "file": "batch3-previews/b3-06-breaking-pattern.png",
+    "read_time": 8.0,
+    "char_count": 120,
+    "bg_duration": 9.1,
+    "font_size": 52,
+    "warning": null
+  }
+]
