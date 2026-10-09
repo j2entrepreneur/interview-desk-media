@@ -8,8 +8,9 @@
     "source": "Raw insights 3.3: shrinking his purpose to avoid being punished for going first. Also 3.4: searching for the magic solution.",
     "josh_phrases": "stand in your truth",
     "invented": "The examples (stay available, keep the peace) and the closer are invented but ring true for this man.",
-    "background": "/mnt/user-data/uploads/dark-grunge-wood-texture-with-dynamic-spotlight-an-2026-10-03-08-04-57-utc.mp4",
-    "bg_name": "dark-grunge-wood-spotlight",
+    "background": "backgrounds/dark-grunge-spotlight.mp4",
+    "bg_name": "dark-grunge-spotlight",
+    "bg_mood": "raw",
     "bg_duration": 20.0
   },
   {
@@ -21,8 +22,9 @@
     "source": "Brain dump 5: the weight men carry. Raw insights 8.2: same essay, verbatim.",
     "josh_phrases": "capacity",
     "invented": "The closer 'love with nowhere to go' is invented. The idea is Josh's.",
-    "background": "/mnt/user-data/uploads/vertical-view-of-beautiful-mountains-hill-with-lan-2026-10-03-17-23-55-utc.mp4",
-    "bg_name": "mountains-hill-landscape",
+    "background": "backgrounds/mountains-landscape.mp4",
+    "bg_name": "mountains-landscape",
+    "bg_mood": "vast",
     "bg_duration": 29.8
   },
   {
@@ -34,8 +36,9 @@
     "source": "Raw insights 1.7: his analytical process, 'I'm 10 steps ahead all the time.' Also 1.6: embodied vs head knowledge.",
     "josh_phrases": "ten steps ahead",
     "invented": "The closer is invented. The analytical-man-stuck pattern is Josh's.",
-    "background": "/mnt/user-data/uploads/cinematic-vertical-planet-view-with-drifting-cosmi-2026-10-03-07-25-22-utc.mov",
-    "bg_name": "cinematic-vertical-planet-cosmic",
+    "background": "backgrounds/cinematic-planet-cosmic.mov",
+    "bg_name": "cinematic-planet-cosmic",
+    "bg_mood": "cerebral",
     "bg_duration": 16.5
   },
   {
@@ -47,8 +50,9 @@
     "source": "Raw insights 4.1: 'I can't forget the sense of relief I had when we separated.' Generalised: many men feel this.",
     "josh_phrases": "own (from 'own it')",
     "invented": "The scene is invented but universal. The relief-as-information frame is Josh's.",
-    "background": "/mnt/user-data/uploads/abstract-vertical-light-motion-background-with-tex-2026-10-03-08-05-11-utc.mp4",
+    "background": "backgrounds/abstract-light-motion.mp4",
     "bg_name": "abstract-light-motion",
+    "bg_mood": "transformation",
     "bg_duration": 20.0
   },
   {
@@ -60,8 +64,9 @@
     "source": "Brain dump 6: men's work content loading all responsibility on the man. Raw insights 3.5: not repeating the burnout.",
     "josh_phrases": "show up / showing up",
     "invented": "The closer 'One man's growth cannot carry two' is invented.",
-    "background": "/mnt/user-data/uploads/aerial-view-of-waves-crashing-on-dark-beach-2026-10-02-04-52-33-utc.mov",
-    "bg_name": "aerial-view-waves-crashing-dark-beach",
+    "background": "backgrounds/aerial-waves-dark-beach.mov",
+    "bg_name": "aerial-waves-dark-beach",
+    "bg_mood": "relentless",
     "bg_duration": 15.2
   },
   {
@@ -73,8 +78,9 @@
     "source": "Raw insights 1.1: his manifesto. 1.6: embodied knowledge. Brain dump 3: recurring patterns.",
     "josh_phrases": "own it, show up",
     "invented": "Short shape reframe. The framing is invented; the values are Josh's.",
-    "background": "/root/.claude/uploads/4764cd9c-3697-5e06-a514-ff8ff6a55f51/4e3d8a3f-white-smoke-rising-fluid-abstract-animation-2026-10-03-09-21-19-utc.mov",
+    "background": "backgrounds/white-smoke-abstract.mov",
     "bg_name": "white-smoke-abstract",
+    "bg_mood": "clean",
     "bg_duration": 9.1
   }
 ]

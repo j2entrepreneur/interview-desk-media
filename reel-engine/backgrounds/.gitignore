@@ -1,6 +1,13 @@
+# Video files live on Google Drive, pulled at render time
 *.mp4
 *.mov
 *.avi
 *.mkv
+
+# Temp render artifacts
+*.frame.png
+*.overlay.png
+
 !.gitkeep
 !README.md
+!backgrounds.json

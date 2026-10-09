@@ -66,6 +66,8 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
         raise SystemExit("missing field: background")
 
     bg_path = Path(spec["background"])
+    if not bg_path.is_absolute():
+        bg_path = HERE / bg_path
     if not bg_path.exists():
         raise SystemExit(f"background video not found: {bg_path}")
 

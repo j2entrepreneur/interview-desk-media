@@ -131,6 +131,10 @@ def render_preview(spec, out_dir):
     read_time = reading_duration(text)
     char_count = len(readable)
 
+    # Resolve relative paths against script directory
+    if not Path(bg_path).is_absolute():
+        bg_path = str(HERE / bg_path)
+
     # Check background exists
     if not Path(bg_path).exists():
         print(f"  SKIP {card_id}: background not found: {bg_path}")
