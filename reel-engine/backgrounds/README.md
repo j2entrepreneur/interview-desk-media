@@ -31,9 +31,9 @@ See `backgrounds.json` for metadata (duration, mood, themes, Drive file IDs).
 | grounded | Nature, organic, growth | Lighter / Relief |
 | clean | Rising, light, releasing | Lighter |
 
-## Current library (25 clips)
+## Current library (32 clips)
 
-16 original clips (probed, metadata complete) + 9 new clips (on Drive, need probe).
+16 original clips (probed, metadata complete) + 16 new clips (on Drive, need probe).
 
 ## Adding new clips
 
@@ -45,7 +45,6 @@ See `backgrounds.json` for metadata (duration, mood, themes, Drive file IDs).
 ## Wanted clips (gaps still in the collection)
 
 - Rain on glass or wet surface (15-20s)
-- Sunrise/dawn breaking (15-20s)
 - Empty road or path at night (15-20s)
 - Underwater/deep ocean (10-15s)
 - City at dawn, empty streets (12-20s)
@@ -53,6 +52,8 @@ See `backgrounds.json` for metadata (duration, mood, themes, Drive file IDs).
 
 Previously wanted, now covered:
 - ~~Fog or mist clearing~~ (smoke-fog-transition.mov)
-- ~~Forest canopy or single tree~~ (alaska-forest-mystical.mov)
+- ~~Forest canopy or single tree~~ (alaska-forest-mystical.mov, alaska-forest-overgrown.mov)
 - ~~Storm with lightning or clouds breaking~~ (storm-clouds-field.mov, dark-storm-golden-horizon.mov)
 - ~~Ember/coal glow close-up~~ (fiery-smoke-particles.mp4)
+- ~~Rain / wet urban night~~ (brooklyn-rainy-night.mp4)
+- ~~Sunrise/dawn breaking~~ (dramatic-sunrise-urban.mov)

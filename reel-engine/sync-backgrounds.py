@@ -54,6 +54,13 @@ FILENAME_MAP = {
     "dynamic-vertical-smoke-fog-transition-overlay-elem": "smoke-fog-transition",
     "dark-storm-clouds-rolling-across-golden-horizon-at": "dark-storm-golden-horizon",
     "intense-fiery-smoke-particles-abstract-motion-back": "fiery-smoke-particles",
+    "trees-blowing-in-the-dark": "trees-blowing-dark",
+    "urban-urban-video-of-brooklyn-on-a-rainy-night": "brooklyn-rainy-night",
+    "indoor-workspace-at-night": "indoor-workspace-night",
+    "cars-driving-through-dark-city-at-night": "cars-dark-city-night",
+    "dramatic-clouds-at-sunrise-in-an-urban-setting": "dramatic-sunrise-urban",
+    "alaska-forest-background-overgrown-woodland-trail": "alaska-forest-overgrown",
+    "misty-forest-river-flowing-water-animated-backgrou": "misty-forest-river",
 }
 
 

@@ -67,15 +67,14 @@
   },
   {
     "file": "cinematic-planet-cosmic.mov",
-    "drive_id": null,
+    "drive_id": "1ZUBO1OBnfb6oZX9T-4kOI-DDeFZeVG4Y",
     "duration": 16.5,
     "resolution": "1080x1920",
     "mood": "cerebral",
     "description": "Planet view from orbit with drifting cosmic particles. Zoomed out, analytical.",
     "best_for": ["recognition"],
     "themes": ["overthinking", "distance", "analytical mind", "seeing everything"],
-    "energy": "low",
-    "_note": "Not yet on Drive"
+    "energy": "low"
   },
   {
     "file": "dark-bookshelf-bed.mov",
@@ -123,15 +122,14 @@
   },
   {
     "file": "mountain-peak-clouds.mov",
-    "drive_id": null,
+    "drive_id": "1_q55LtSLqbW996ObcJsvrYZlJaISMB_V",
     "duration": 12.1,
     "resolution": "1296x2304",
     "mood": "obscured",
     "description": "Mountain peak hidden by heavy clouds. Summit not yet visible.",
     "best_for": ["recognition", "relief"],
     "themes": ["aspiration", "unseen progress", "the work not visible yet"],
-    "energy": "low",
-    "_note": "Not yet on Drive"
+    "energy": "low"
   },
   {
     "file": "nighttime-cityscape-river.mp4",
@@ -283,6 +281,90 @@
     "best_for": ["recognition"],
     "themes": ["intensity", "burning", "fire", "raw energy"],
     "energy": "high",
+    "_needs_probe": true
+  },
+  {
+    "file": "trees-blowing-dark.mov",
+    "drive_id": "1NiheMoGvTNRAg_gQ9Cx3C6XBUlDqryUB",
+    "duration": null,
+    "resolution": null,
+    "mood": "turbulent",
+    "description": "Trees blowing in the dark. Restless movement, things bending but not breaking.",
+    "best_for": ["recognition"],
+    "themes": ["endurance", "storm", "bending not breaking", "resistance"],
+    "energy": "medium",
+    "_needs_probe": true
+  },
+  {
+    "file": "brooklyn-rainy-night.mp4",
+    "drive_id": "1P71AQik3UAAT7-9uZLzGe4F8vIdEoBPu",
+    "duration": null,
+    "resolution": null,
+    "mood": "intimate",
+    "description": "Brooklyn streets on a rainy night. Wet city, alone with your thoughts, walking through it.",
+    "best_for": ["recognition", "relief"],
+    "themes": ["rain", "solitude", "urban isolation", "walking through it"],
+    "energy": "medium",
+    "_needs_probe": true
+  },
+  {
+    "file": "indoor-workspace-night.mov",
+    "drive_id": "16yzCKHNZzgUWHwZLCEXdHMwqXachF4La",
+    "duration": null,
+    "resolution": null,
+    "mood": "intimate",
+    "description": "Indoor workspace at night. Late hours, quiet grind, the work nobody sees.",
+    "best_for": ["recognition"],
+    "themes": ["late nights", "invisible work", "desk", "quiet grind"],
+    "energy": "low",
+    "_needs_probe": true
+  },
+  {
+    "file": "cars-dark-city-night.mp4",
+    "drive_id": "1CJKPTQ0SLfoLKpmRlbwopwMJpf-nFtgO",
+    "duration": null,
+    "resolution": null,
+    "mood": "performing",
+    "description": "Cars driving through dark city at night. Movement without arrival, the commute, autopilot.",
+    "best_for": ["recognition"],
+    "themes": ["autopilot", "going through motions", "urban night", "routine"],
+    "energy": "medium",
+    "_needs_probe": true
+  },
+  {
+    "file": "dramatic-sunrise-urban.mov",
+    "drive_id": "1t3ok0He_UwgABpHjYQJGr-Go9kraaWot",
+    "duration": null,
+    "resolution": null,
+    "mood": "transformation",
+    "description": "Dramatic clouds at sunrise in an urban setting. New day, first light, something beginning.",
+    "best_for": ["relief", "lighter"],
+    "themes": ["dawn", "new beginning", "hope", "sunrise"],
+    "energy": "medium",
+    "_needs_probe": true
+  },
+  {
+    "file": "alaska-forest-overgrown.mov",
+    "drive_id": "12fZP5WjkOevkVUN9MYacYjj0ZQdz0g6K",
+    "duration": null,
+    "resolution": null,
+    "mood": "grounded",
+    "description": "Alaska forest, overgrown woodland trail. Deeper into the wild, untamed path.",
+    "best_for": ["relief"],
+    "themes": ["wilderness", "overgrown path", "nature reclaiming", "deeper work"],
+    "energy": "low",
+    "_needs_probe": true
+  },
+  {
+    "file": "misty-forest-river.mov",
+    "drive_id": "1INRhgHn1LMp0DW97ITlFUwfED1KhQ7dM",
+    "duration": null,
+    "resolution": null,
+    "mood": "reflective",
+    "description": "Misty forest river, flowing water. Quiet movement, things carrying on regardless.",
+    "best_for": ["relief"],
+    "themes": ["flow", "mist", "nature", "things moving without force"],
+    "energy": "low",
     "_needs_probe": true
   }
 ]
