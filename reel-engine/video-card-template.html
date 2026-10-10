@@ -23,7 +23,7 @@
     left: 60px;
     right: 60px;
     top: 260px;
-    bottom: 480px;
+    bottom: 510px;
     background: rgba(0, 0, 0, 0.55);
     border-radius: 24px;
   }
@@ -34,7 +34,7 @@
     left: 100px;
     right: 100px;
     top: 300px;
-    bottom: 520px;
+    bottom: 560px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +57,7 @@
 
   .handle {
     position: absolute;
-    bottom: 440px;
+    bottom: 530px;
     font-weight: 600;
     font-size: 36px;
     color: rgba(244, 244, 244, 0.35);
@@ -102,7 +102,7 @@ window.setup = function(d) {
   const pane = document.getElementById('pane');
   const padV = 60, padH = 50;
   const top = Math.max(260, textRect.top - padV);
-  const bottom = Math.max(480, 1920 - textRect.bottom - padV);
+  const bottom = Math.max(510, 1920 - textRect.bottom - padV);
   pane.style.top = top + 'px';
   pane.style.bottom = bottom + 'px';
 
