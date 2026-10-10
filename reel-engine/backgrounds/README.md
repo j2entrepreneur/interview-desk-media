@@ -31,9 +31,9 @@ See `backgrounds.json` for metadata (duration, mood, themes, Drive file IDs).
 | grounded | Nature, organic, growth | Lighter / Relief |
 | clean | Rising, light, releasing | Lighter |
 
-## Current library (32 clips)
+## Current library (36 clips)
 
-16 original clips (probed, metadata complete) + 16 new clips (on Drive, need probe).
+16 original clips (probed, metadata complete) + 20 new clips (on Drive, need probe).
 
 ## Adding new clips
 
@@ -44,11 +44,7 @@ See `backgrounds.json` for metadata (duration, mood, themes, Drive file IDs).
 
 ## Wanted clips (gaps still in the collection)
 
-- Rain on glass or wet surface (15-20s)
-- Empty road or path at night (15-20s)
-- Underwater/deep ocean (10-15s)
 - City at dawn, empty streets (12-20s)
-- Hands close-up, dark, holding/releasing (8-12s)
 
 Previously wanted, now covered:
 - ~~Fog or mist clearing~~ (smoke-fog-transition.mov)
@@ -57,3 +53,7 @@ Previously wanted, now covered:
 - ~~Ember/coal glow close-up~~ (fiery-smoke-particles.mp4)
 - ~~Rain / wet urban night~~ (brooklyn-rainy-night.mp4)
 - ~~Sunrise/dawn breaking~~ (dramatic-sunrise-urban.mov)
+- ~~Rain on glass~~ (rain-droplets-glass.mov)
+- ~~Empty road/street at night~~ (foggy-night-street.mov)
+- ~~Underwater~~ (underwater-reef-sunlight.mov)
+- ~~City at sunset/dusk~~ (aerial-sunset-city.mov)

@@ -61,6 +61,10 @@ FILENAME_MAP = {
     "dramatic-clouds-at-sunrise-in-an-urban-setting": "dramatic-sunrise-urban",
     "alaska-forest-background-overgrown-woodland-trail": "alaska-forest-overgrown",
     "misty-forest-river-flowing-water-animated-backgrou": "misty-forest-river",
+    "foggy-night-street-with-cars-and-streetlights": "foggy-night-street",
+    "rain-droplets-running-down-glass-window": "rain-droplets-glass",
+    "underwater-reef-landscape-with-sunlight-and-turquo": "underwater-reef-sunlight",
+    "aerial-drone-view-of-chisinau-moldova-at-sunset": "aerial-sunset-city",
 }
 
 

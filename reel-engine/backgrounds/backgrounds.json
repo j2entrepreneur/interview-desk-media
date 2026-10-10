@@ -366,5 +366,53 @@
     "themes": ["flow", "mist", "nature", "things moving without force"],
     "energy": "low",
     "_needs_probe": true
+  },
+  {
+    "file": "foggy-night-street.mov",
+    "drive_id": "1PrqPT2JKHV3CiE3fI2GywSbw8dpgwfnX",
+    "duration": null,
+    "resolution": null,
+    "mood": "performing",
+    "description": "Foggy night street with cars and streetlights. Visibility low, navigating through it, the path half seen.",
+    "best_for": ["recognition"],
+    "themes": ["fog", "navigating blind", "night drive", "low visibility"],
+    "energy": "medium",
+    "_needs_probe": true
+  },
+  {
+    "file": "rain-droplets-glass.mov",
+    "drive_id": "1SfbRkoZTRE8tIyR_E6roBbVctn_-D23I",
+    "duration": null,
+    "resolution": null,
+    "mood": "intimate",
+    "description": "Rain droplets running down glass window. Private, inward, watching the world from behind something.",
+    "best_for": ["recognition", "relief"],
+    "themes": ["rain", "separation", "watching", "private moment"],
+    "energy": "low",
+    "_needs_probe": true
+  },
+  {
+    "file": "underwater-reef-sunlight.mov",
+    "drive_id": "16yNHrqR3dAhjPpP6bc7qmqKuUQcAGdVo",
+    "duration": null,
+    "resolution": null,
+    "mood": "transformation",
+    "description": "Underwater reef with sunlight filtering down. Submerged, but light above. Surfacing.",
+    "best_for": ["relief"],
+    "themes": ["underwater", "surfacing", "light above", "depth to clarity"],
+    "energy": "low",
+    "_needs_probe": true
+  },
+  {
+    "file": "aerial-sunset-city.mov",
+    "drive_id": "1fKmgW2cXzxBModr0KOTE3UrlQ-MKf3St",
+    "duration": null,
+    "resolution": null,
+    "mood": "reflective",
+    "description": "Aerial drone view of a city at sunset. The day ending, seeing it all from above, perspective.",
+    "best_for": ["relief", "lighter"],
+    "themes": ["sunset", "city", "perspective", "the day ending"],
+    "energy": "medium",
+    "_needs_probe": true
   }
 ]
