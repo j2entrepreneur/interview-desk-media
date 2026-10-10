@@ -1,0 +1,128 @@
+[
+  {
+    "id": "b1-01-shrinking",
+    "file": "batch1-previews/b1-01-shrinking.png",
+    "read_time": 20.1,
+    "char_count": 344,
+    "bg_duration": 20.0,
+    "font_size": 52,
+    "warning": "WARNING: needs 20.1s but clip is 20.0s"
+  },
+  {
+    "id": "b1-02-earning",
+    "file": "batch1-previews/b1-02-earning.png",
+    "read_time": 17.9,
+    "char_count": 304,
+    "bg_duration": 11.2,
+    "font_size": 52,
+    "warning": "WARNING: needs 17.9s but clip is 11.2s"
+  },
+  {
+    "id": "b1-03-love-nowhere",
+    "file": "batch1-previews/b1-03-love-nowhere.png",
+    "read_time": 20.0,
+    "char_count": 343,
+    "bg_duration": 29.8,
+    "font_size": 52,
+    "warning": null
+  },
+  {
+    "id": "b1-04-root-cause",
+    "file": "batch1-previews/b1-04-root-cause.png",
+    "read_time": 18.1,
+    "char_count": 307,
+    "bg_duration": 14.9,
+    "font_size": 52,
+    "warning": "WARNING: needs 18.1s but clip is 14.9s"
+  },
+  {
+    "id": "b1-05-think-your-way-out",
+    "file": "batch1-previews/b1-05-think-your-way-out.png",
+    "read_time": 16.4,
+    "char_count": 275,
+    "bg_duration": 6.2,
+    "font_size": 52,
+    "warning": "WARNING: needs 16.4s but clip is 6.2s"
+  },
+  {
+    "id": "b1-06-already-enough",
+    "file": "batch1-previews/b1-06-already-enough.png",
+    "read_time": 18.0,
+    "char_count": 305,
+    "bg_duration": 12.2,
+    "font_size": 52,
+    "warning": "WARNING: needs 18.0s but clip is 12.2s"
+  },
+  {
+    "id": "b1-07-ten-steps",
+    "file": "batch1-previews/b1-07-ten-steps.png",
+    "read_time": 17.5,
+    "char_count": 296,
+    "bg_duration": 16.5,
+    "font_size": 52,
+    "warning": "WARNING: needs 17.5s but clip is 16.5s"
+  },
+  {
+    "id": "b1-08-software",
+    "file": "batch1-previews/b1-08-software.png",
+    "read_time": 18.0,
+    "char_count": 306,
+    "bg_duration": 9.6,
+    "font_size": 52,
+    "warning": "WARNING: needs 18.0s but clip is 9.6s"
+  },
+  {
+    "id": "b1-09-quiet-admission",
+    "file": "batch1-previews/b1-09-quiet-admission.png",
+    "read_time": 17.6,
+    "char_count": 297,
+    "bg_duration": 12.1,
+    "font_size": 52,
+    "warning": "WARNING: needs 17.6s but clip is 12.1s"
+  },
+  {
+    "id": "b1-10-loading-the-man",
+    "file": "batch1-previews/b1-10-loading-the-man.png",
+    "read_time": 20.3,
+    "char_count": 348,
+    "bg_duration": 15.2,
+    "font_size": 52,
+    "warning": "WARNING: needs 20.3s but clip is 15.2s"
+  },
+  {
+    "id": "b1-11-peace",
+    "file": "batch1-previews/b1-11-peace.png",
+    "read_time": 19.8,
+    "char_count": 339,
+    "bg_duration": 20.0,
+    "font_size": 52,
+    "warning": null
+  },
+  {
+    "id": "b1-12-providing",
+    "file": "batch1-previews/b1-12-providing.png",
+    "read_time": 20.4,
+    "char_count": 350,
+    "bg_duration": 9.5,
+    "font_size": 52,
+    "warning": "WARNING: needs 20.4s but clip is 9.5s"
+  },
+  {
+    "id": "b1-13-breaking-pattern",
+    "file": "batch1-previews/b1-13-breaking-pattern.png",
+    "read_time": 8.0,
+    "char_count": 120,
+    "bg_duration": 9.1,
+    "font_size": 52,
+    "warning": null
+  },
+  {
+    "id": "b1-14-his-word",
+    "file": "batch1-previews/b1-14-his-word.png",
+    "read_time": 18.5,
+    "char_count": 315,
+    "bg_duration": 12.1,
+    "font_size": 52,
+    "warning": "WARNING: needs 18.5s but clip is 12.1s"
+  }
+]
