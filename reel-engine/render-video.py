@@ -32,6 +32,8 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
+from clip_path import resolve_background
+
 HERE = Path(__file__).parent
 FPS = 30
 CPS = 18.5          # reading rate in characters per second (spaces included)
@@ -65,11 +67,10 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
     if not spec.get("background"):
         raise SystemExit("missing field: background")
 
-    bg_path = Path(spec["background"])
-    if not bg_path.is_absolute():
-        bg_path = HERE / bg_path
-    if not bg_path.exists():
-        raise SystemExit(f"background video not found: {bg_path}")
+    try:
+        bg_path = resolve_background(spec["background"])
+    except FileNotFoundError as e:
+        raise SystemExit(str(e))
 
     tint = tint_override if tint_override is not None else spec.get("tint", 0.35)
     pane_opacity = pane_override if pane_override is not None else spec.get("paneOpacity", 0.55)

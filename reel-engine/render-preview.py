@@ -19,6 +19,8 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
+from clip_path import resolve_background
+
 HERE = Path(__file__).parent
 CPS = 18.5
 SETTLE = 1.5
@@ -131,13 +133,11 @@ def render_preview(spec, out_dir):
     read_time = reading_duration(text)
     char_count = len(readable)
 
-    # Resolve relative paths against script directory
-    if not Path(bg_path).is_absolute():
-        bg_path = str(HERE / bg_path)
-
-    # Check background exists
-    if not Path(bg_path).exists():
-        print(f"  SKIP {card_id}: background not found: {bg_path}")
+    # Resolve against reel-engine/, then the synced clips repo
+    try:
+        bg_path = str(resolve_background(bg_path))
+    except FileNotFoundError as e:
+        print(f"  SKIP {card_id}: {e}")
         return None
 
     bg_duration = probe_duration(bg_path)
