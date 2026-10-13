@@ -8,7 +8,7 @@ spec.json fields:
   handle       (optional) defaults to @iamjoshauld
   background   (required) path to background video file
   paneOpacity  (optional) dark pane opacity 0.0-1.0, default 0.55
-  tint         (optional) darken the background 0.0-1.0, default 0.35
+  tint         (optional) darken the background 0.0-1.0, default 0 (none)
 
 options:
   --duration N    override duration in seconds (default: auto from reading time
@@ -25,7 +25,7 @@ options:
 The engine:
 1. Renders the text overlay as a transparent PNG via Playwright
 2. Scales/crops the background video to 1080x1920
-3. Applies a dark tint to the background
+3. Optionally tints the background (off by default)
 4. Composites the text overlay on top
 5. Adds silent audio track for Instagram Reel compatibility
 """
@@ -79,7 +79,7 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
     except FileNotFoundError as e:
         raise SystemExit(str(e))
 
-    tint = tint_override if tint_override is not None else spec.get("tint", 0.35)
+    tint = tint_override if tint_override is not None else spec.get("tint", 0.0)
     pane_opacity = pane_override if pane_override is not None else spec.get("paneOpacity", 0.55)
 
     # Auto-duration from reading time at 18.5 cps. If the clip is too short,
@@ -141,8 +141,10 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
         f"crop=1080:1920,"
         # Slow motion, only when retime.plan chose it
         f"{retime.filters(slow)}"
-        # Apply tint/darken
-        f"eq=brightness={-tint * 0.5}:contrast={darken + 0.1}:saturation=0.7,"
+        # Optional tint/darken (off by default since Oct 2026: the text pane
+        # already gives contrast, and tinted reels looked too dark)
+        + (f"eq=brightness={-tint * 0.5}:contrast={darken + 0.1}:saturation=0.7,"
+           if tint > 0 else "") +
         f"format=yuva420p[bg];"
         # Load overlay
         f"[1:v]format=yuva420p[ovr];"

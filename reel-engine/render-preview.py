@@ -92,16 +92,19 @@ def render_text_overlay(text, handle="@iamjoshauld", pane_opacity=0.55):
     return overlay_bytes, info
 
 
-def composite_preview(frame_path, overlay_bytes, out_path, tint=0.35):
-    """Composite text overlay onto extracted frame with tinting."""
+def composite_preview(frame_path, overlay_bytes, out_path, tint=0.0):
+    """Composite text overlay onto extracted frame (optional tint, off by
+    default to match render-video.py)."""
     # Write overlay to temp file
     overlay_path = Path(str(out_path) + ".overlay.png")
     overlay_path.write_bytes(overlay_bytes)
 
     darken = 1.0 - tint
+    grade = (f"eq=brightness={-tint * 0.5}:contrast={darken + 0.1}:saturation=0.7,"
+             if tint > 0 else "")
 
     filter_complex = (
-        f"[0:v]eq=brightness={-tint * 0.5}:contrast={darken + 0.1}:saturation=0.7,"
+        f"[0:v]{grade}"
         f"format=yuva420p[bg];"
         f"[1:v]format=yuva420p[ovr];"
         f"[bg][ovr]overlay=0:0:format=auto,format=yuv420p[out]"
