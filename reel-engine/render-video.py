@@ -12,8 +12,13 @@ spec.json fields:
 
 options:
   --duration N    override duration in seconds (default: auto from reading time
-                  at 18.5 characters per second + 1.5s settle, capped to
-                  background length). Warns if override is too short to read.
+                  at 18.5 characters per second + 1.5s settle). Warns if
+                  override is too short to read.
+  --no-slow       never slow the background; cut the video at the clip's end.
+                  By default a clip shorter than the reading time is slowed
+                  down, but only where retime.py judges it will stay smooth
+                  (max 1.5x; 60fps clips spread real frames; calm clips get
+                  generated in-between frames; fast motion is refused).
   --tint N        override background darkening (0.0=none, 1.0=black)
   --pane N        override dark pane opacity behind text
 
@@ -33,6 +38,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from clip_path import resolve_background
+import retime
 
 HERE = Path(__file__).parent
 FPS = 30
@@ -60,7 +66,8 @@ def probe_duration(video_path):
         return 10.0
 
 
-def render(spec_path, out_path, duration=None, tint_override=None, pane_override=None):
+def render(spec_path, out_path, duration=None, tint_override=None, pane_override=None,
+           allow_slow=True):
     spec = json.loads(Path(spec_path).read_text())
     if not spec.get("text"):
         raise SystemExit("missing field: text")
@@ -75,13 +82,23 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
     tint = tint_override if tint_override is not None else spec.get("tint", 0.35)
     pane_opacity = pane_override if pane_override is not None else spec.get("paneOpacity", 0.55)
 
-    # Auto-duration from reading time at 18.5 cps, capped to background length
+    # Auto-duration from reading time at 18.5 cps. If the clip is too short,
+    # retime.py decides whether it can be slowed down smoothly.
     read_time = reading_duration(spec["text"])
     bg_duration = probe_duration(bg_path)
-    if duration is None:
-        duration = min(read_time, bg_duration)
+    target = read_time if duration is None else duration
+
+    slow = {"method": "none", "stretch": 1.0}
+    if target > bg_duration and allow_slow:
+        slow = retime.plan(bg_path, target)
+        print(f"  background: {retime.describe(slow)}")
+        if slow["method"] == "refuse":
+            raise SystemExit(f"{bg_path.name}: {slow['reason']} "
+                             f"(or pass --no-slow to cut the video short)")
+    if slow["method"] in ("spread", "interpolate"):
+        duration = min(target, bg_duration * slow["stretch"])
     else:
-        duration = min(duration, bg_duration)
+        duration = min(target, bg_duration)
 
     if duration < read_time:
         print(f"  WARNING: video {duration:.1f}s but text needs {read_time:.1f}s at {CPS} cps")
@@ -122,6 +139,8 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
         # Scale background to cover 1080x1920, center crop
         f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,"
         f"crop=1080:1920,"
+        # Slow motion, only when retime.plan chose it
+        f"{retime.filters(slow)}"
         # Apply tint/darken
         f"eq=brightness={-tint * 0.5}:contrast={darken + 0.1}:saturation=0.7,"
         f"format=yuva420p[bg];"
@@ -159,11 +178,17 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
     if ff.returncode != 0:
         raise SystemExit(f"ffmpeg failed with exit code {ff.returncode}")
 
+    if slow["method"] in ("spread", "interpolate"):
+        unevenness, frozen, ok = retime.check_smoothness(out_path)
+        verdict = "smooth" if ok else "WARNING: may look jittery, review before posting"
+        print(f"  smoothness: unevenness {unevenness}, frozen frames {frozen:.0%} -> {verdict}")
+
     readable_chars = len(re.sub(r"<[^>]+>", "", spec["text"]))
     print(f"OK  {out_path}  {duration:.1f}s  font {info['fontSize']}px  "
           f"{readable_chars} readable chars  {readable_chars / max(0.1, duration - SETTLE):.1f} cps "
           f"(target {CPS})  tint={tint}  pane={pane_opacity}")
-    return {"file": str(out_path), "duration": duration, "read_time": read_time, **info}
+    return {"file": str(out_path), "duration": duration, "read_time": read_time,
+            "slow": slow, **info}
 
 
 if __name__ == "__main__":
@@ -186,5 +211,8 @@ if __name__ == "__main__":
         duration = int(duration)
     tint_override = pop_flag("--tint")
     pane_override = pop_flag("--pane")
+    allow_slow = "--no-slow" not in args
+    if not allow_slow:
+        args.remove("--no-slow")
 
-    render(args[0], args[1], duration, tint_override, pane_override)
+    render(args[0], args[1], duration, tint_override, pane_override, allow_slow)

@@ -20,6 +20,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from clip_path import resolve_background
+import retime
 
 HERE = Path(__file__).parent
 CPS = 18.5
@@ -142,10 +143,16 @@ def render_preview(spec, out_dir):
 
     bg_duration = probe_duration(bg_path)
 
-    # Duration warning
+    # Clip too short: report what the video render will do about it
     warning = ""
+    slow_note = "normal speed"
     if read_time > bg_duration:
-        warning = f" WARNING: needs {read_time:.1f}s but clip is {bg_duration:.1f}s"
+        slow = retime.plan(bg_path, read_time)
+        slow_note = retime.describe(slow)
+        if slow["method"] == "refuse":
+            warning = f" WARNING: {slow_note}"
+        else:
+            print(f"  background: {slow_note}")
 
     print(f"\n--- {card_id} ({spec['type']}, {spec['voice']}) ---")
     print(f"  chars: {char_count}  read_time: {read_time:.1f}s  clip: {bg_duration:.1f}s{warning}")
@@ -174,6 +181,7 @@ def render_preview(spec, out_dir):
         "bg_duration": round(bg_duration, 1),
         "font_size": info["fontSize"],
         "warning": warning.strip() if warning else None,
+        "background_speed": slow_note,
     }
 
 
