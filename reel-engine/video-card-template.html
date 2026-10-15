@@ -57,6 +57,15 @@
     margin: 0.3em 0;
   }
 
+  /* Hook mode: one short line, large and bold, shown for the first
+     second or two so a scrolling viewer gets one idea, not a paragraph */
+  body.hook .card-text p {
+    font-weight: 700;
+    font-size: 84px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+  }
+
   .handle {
     position: absolute;
     bottom: 530px;
@@ -88,6 +97,8 @@ function fit(el, minPx) {
 
 window.setup = function(d) {
   const el = document.getElementById('text');
+  document.body.classList.toggle('hook', !!d.hook);
+  el.style.fontSize = '';  // clear any size left by a previous fit()
   el.innerHTML = d.text.replace(/\n/g, '<br>');
   if (d.handle) document.getElementById('handle').textContent = d.handle;
 
@@ -97,7 +108,7 @@ window.setup = function(d) {
       'rgba(0, 0, 0, ' + d.paneOpacity + ')';
   }
 
-  const fontSize = fit(el, 32);
+  const fontSize = fit(el, d.hook ? 60 : 32);
 
   // Resize pane to hug the text with padding
   const textRect = el.getBoundingClientRect();

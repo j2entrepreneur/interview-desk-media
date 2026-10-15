@@ -38,6 +38,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 from clip_path import resolve_background
+import hook
 import retime
 
 HERE = Path(__file__).parent
@@ -85,6 +86,10 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
     # Auto-duration from reading time at 18.5 cps. If the clip is too short,
     # retime.py decides whether it can be slowed down smoothly.
     read_time = reading_duration(spec["text"])
+    hook_line = hook.resolve_hook(spec)
+    if hook_line:
+        read_time = hook.total_duration(read_time, hook_line, CPS)
+        print(f"  hook: {hook_line!r} for {hook.HOOK_HOLD}s, then full card")
     bg_duration = probe_duration(bg_path)
     target = read_time if duration is None else duration
 
@@ -122,11 +127,19 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
 
         # Screenshot with transparency
         overlay_png = page.screenshot(type="png", omit_background=True)
+
+        hook_png = None
+        if hook_line:
+            page.evaluate("d => window.setup(d)", {**setup_data, "text": hook_line, "hook": True})
+            hook_png = page.screenshot(type="png", omit_background=True)
         browser.close()
 
-    # Write overlay to temp file
+    # Write overlays to temp files
     overlay_path = Path(str(out_path) + ".overlay.png")
     overlay_path.write_bytes(overlay_png)
+    hook_path = Path(str(out_path) + ".hook.png")
+    if hook_png:
+        hook_path.write_bytes(hook_png)
 
     # --- Step 2: Composite with ffmpeg ---
     # Build the filter:
@@ -146,11 +159,21 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
         + (f"eq=brightness={-tint * 0.5}:contrast={darken + 0.1}:saturation=0.7,"
            if tint > 0 else "") +
         f"format=yuva420p[bg];"
-        # Load overlay
-        f"[1:v]format=yuva420p[ovr];"
-        # Composite
-        f"[bg][ovr]overlay=0:0:format=auto,format=yuv420p[out]"
     )
+    if hook_line:
+        h, f = hook.HOOK_HOLD, hook.FADE
+        filter_complex += (
+            # Hook shows first, then crossfades into the full card
+            f"[3:v]format=yuva420p,fade=t=out:st={h}:d={f}:alpha=1[hk];"
+            f"[1:v]format=yuva420p,fade=t=in:st={h}:d={f}:alpha=1[ovr];"
+            f"[bg][hk]overlay=0:0:format=auto[b1];"
+            f"[b1][ovr]overlay=0:0:format=auto,format=yuv420p[out]"
+        )
+    else:
+        filter_complex += (
+            f"[1:v]format=yuva420p[ovr];"
+            f"[bg][ovr]overlay=0:0:format=auto,format=yuv420p[out]"
+        )
 
     cmd = [
         "ffmpeg", "-y", "-loglevel", "error",
@@ -160,6 +183,8 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
         "-loop", "1", "-framerate", str(FPS), "-i", str(overlay_path),
         # Silent audio
         "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100",
+        # Input 3 (hook-first only): hook overlay PNG
+        *(["-loop", "1", "-framerate", str(FPS), "-i", str(hook_path)] if hook_line else []),
         # Filter
         "-filter_complex", filter_complex,
         "-map", "[out]", "-map", "2:a",
@@ -176,6 +201,7 @@ def render(spec_path, out_path, duration=None, tint_override=None, pane_override
 
     ff = subprocess.run(cmd)
     overlay_path.unlink(missing_ok=True)
+    hook_path.unlink(missing_ok=True)
 
     if ff.returncode != 0:
         raise SystemExit(f"ffmpeg failed with exit code {ff.returncode}")
